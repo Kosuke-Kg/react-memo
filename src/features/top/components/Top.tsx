@@ -11,7 +11,7 @@ const Top: FC = () => {
       aria-labelledby="MemoList"
       subheader={
         <ListSubheader component="div" id="MemoList">
-          React Typescript 個人的メモ
+          React Hooks Form
         </ListSubheader>
       }
     >
