@@ -1,10 +1,16 @@
 import React, { type FC } from 'react'
-import { Button, Stack, Switch, TextField, Typography } from '@mui/material'
+import { Box, Button, Stack, Switch, TextField, Typography } from '@mui/material'
 import useForms from '../api/useForms'
 import { Controller } from 'react-hook-form'
 
 const Forms: FC = () => {
-  const { form, onSubmit } = useForms()
+  const {
+    form,
+    fields,
+    fieldAdd,
+    fieldRemove,
+    onSubmit
+  } = useForms()
 
   return (
     <Stack
@@ -43,7 +49,23 @@ const Forms: FC = () => {
             />
           )}
         />
+
       </Stack>
+      {
+        fields.map((f, i) => (
+          <Box key={f.id} >
+            <Typography>商品名</Typography>
+            <TextField
+              {...form.register(`field.${i}.itemName`)}
+            />
+            <Typography>価格</Typography>
+            <TextField
+              {...form.register(`field.${i}.price`)}
+            />
+          </Box>
+        ))
+      }
+      <Stack />
 
       <Button type="submit" >コンソールに表示</Button>
     </Stack>
